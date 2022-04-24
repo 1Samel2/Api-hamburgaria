@@ -18,9 +18,11 @@ Middleware => intercepted => tem o poder de parar ou alterar dados da requisi√ß√
 
 
 const express = require('express')
-const port = 3000
+const cors = require('cors')
+const port = 3001
 const app = express()
 app.use(express.json()) /* usar esse use sempre quando for utilizar body antigo */
+app.use(cors())
 const uuid = require('uuid')
 
 const orders = []/*  nunca usar isso para armazenzar < */
@@ -47,6 +49,7 @@ const checkUserId = (request, response, next) => {
 
 app.get('/order', (request, response) => {
     return response.json(orders)
+    
 })
 
 app.post('/order', (request, response) => {
